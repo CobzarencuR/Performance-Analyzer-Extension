@@ -1,4 +1,4 @@
-# Performance Analyzer-Chrome Extension
+# Performance Analyzer Extension
 The Performance Analyzer Extension is a tool designed to help you monitor and analyze the performance of the websites you visit. Whether you are curious about how websites perform, this extension provides insights into various performance metrics.
 
 # Features:
