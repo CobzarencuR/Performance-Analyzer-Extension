@@ -11,7 +11,7 @@ The Performance Analyzer Extension is a tool designed to help you monitor and an
 <b>System Information:</b>
 + CPU Usage: Keep an eye on the average CPU usage during your browsing session.<br>
 + Memory Usage: Check how much memory is being used.<br>
-+ Battery Information: Get real-time updates on your battery level, charging status, and estimated time remaining.
++ Battery Information: Get real-time updates on your battery level, charging status and estimated time remaining.
 
 # How to load the extension:
 + Download the .zip file and extract it
