@@ -1,5 +1,5 @@
 # Performance Analyzer Extension
-The Performance Analyzer Extension is a tool designed to help you monitor and analyze the performance of the websites you visit. Whether you are curious about how websites perform, this extension provides insights into various performance metrics.
+The Performance Analyzer Extension is a very simple tool designed to monitor and analyze the performance of the websites you visit. Whether you are curious about how websites perform, this extension provides insights into various performance metric. It also offers information on your system's CPU usage, memory usage and battery status.
 
 # Features:
 + Page Load Time: Measure how long it takes for the page to fully load.<br>
