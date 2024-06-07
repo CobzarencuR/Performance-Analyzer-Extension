@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const domain = extractDomain(url.hostname);
 
         // Display the current website domain
-        document.getElementById('current-domain').textContent = `${domain}`;
+        const currentDomainElement = document.getElementById('current-domain');
+        currentDomainElement.textContent = `${domain}`;
+
+        const descenders = /[qypgj]/;
+        if (descenders.test(domain)) {
+            currentDomainElement.style.textUnderlineOffset = '0.225em';
+        }
 
         if (domain === 'chrome' || domain === 'chrome-extension') {
             document.getElementById('metrics').innerHTML = 'Performance data is not available for this URL.';
