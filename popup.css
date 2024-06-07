@@ -19,6 +19,8 @@ h1 {
     text-align: center;
     font-size: 24px;
     color: #544ecb;
+    text-decoration: underline;
+    margin-bottom: 0.25rem;
 }
 
 .metric {
