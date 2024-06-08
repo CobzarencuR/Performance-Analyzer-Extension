@@ -35,6 +35,12 @@ h1 {
 .metric p {
     margin: 5px 0;
     color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.metric-value {
+    text-align: right;
 }
 
 .error {
@@ -62,7 +68,9 @@ h1 {
 
 #cpu-usage,
 #memory-usage,
-#battery-info {
+#battery-info p {
     font-size: 14px;
     color: black;
+    display: flex;
+    justify-content: space-between;
 }
