@@ -79,20 +79,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const responseTimeRatio = Math.min((performanceData.responseEnd - performanceData.requestStart) / 10000, 1);
 
         const metrics = `
-        <p>Page Load Time: ${performanceData.loadEventEnd - performanceData.navigationStart}ms</p>
+        <p>Page Load Time:<span class="metric-value">${performanceData.loadEventEnd - performanceData.navigationStart}ms</span></p>
         <div class="progress-bar-container">
-            <div class="progress-bar fill" style="width: ${pageLoadTimeRatio * 100}%;"></div>
+            <div class="progress-bar" style="width: ${pageLoadTimeRatio * 100}%;"></div>
         </div>
-        <p>DOM Content Loaded: ${performanceData.domContentLoadedEventEnd - performanceData.navigationStart}ms</p>
+        <p>DOM Content Loaded:<span class="metric-value">${performanceData.domContentLoadedEventEnd - performanceData.navigationStart}ms</span></p>
         <div class="progress-bar-container">
             <div class="progress-bar" style="width: ${domContentLoadedRatio * 100}%;"></div>
         </div>
-        <p>Response Time: ${performanceData.responseEnd - performanceData.requestStart}ms</p>
+        <p>Response Time:<span class="metric-value">${performanceData.responseEnd - performanceData.requestStart}ms</span></p>
         <div class="progress-bar-container">
             <div class="progress-bar" style="width: ${responseTimeRatio * 100}%;"></div>
         </div>
-        <p>Number of Requests: ${resourceEntries.length}</p>
-        <p>Total Data Consumed: ${(totalData / 1024).toFixed(2)} KB</p>
+        <p>Number of Requests:<span class="metric-value">${resourceEntries.length}</span></p>
+        <p>Total Data Consumed:<span class="metric-value">${(totalData / 1024).toFixed(2)} KB</span></p>
     `;
         return metrics;
     }
@@ -131,19 +131,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (validProcessorCount > 0) {
                     const avgUsage = (totalUsage / validProcessorCount).toFixed(2);
-                    document.getElementById('cpu-usage').textContent = `CPU Usage: ${avgUsage}%`;
+                    document.getElementById('cpu-usage').innerHTML = `CPU Usage: <span class="metric-value">${avgUsage}%</span>`;
                 } else {
                     console.error('No valid CPU usage values found.');
-                    document.getElementById('cpu-usage').textContent = 'CPU usage not available';
+                    document.getElementById('cpu-usage').innerHTML = 'CPU usage not available';
                 }
             } else {
                 console.error('No CPU information available.');
-                document.getElementById('cpu-usage').textContent = 'No CPU information available';
+                document.getElementById('cpu-usage').innerHTML = 'No CPU information available';
             }
         })
         .catch(error => {
             console.error('Error fetching CPU info:', error);
-            document.getElementById('cpu-usage').textContent = 'Error fetching CPU information';
+            document.getElementById('cpu-usage').innerHTML = 'Error fetching CPU information';
         });
 
     // Memory Usage
@@ -152,27 +152,31 @@ document.addEventListener('DOMContentLoaded', function () {
             const usedMemory = (memoryInfo.capacity - memoryInfo.availableCapacity) / (1024 * 1024);
             const totalMemory = memoryInfo.capacity / (1024 * 1024);
             const memoryUsage = ((usedMemory / totalMemory) * 100).toFixed(2);
-            document.getElementById('memory-usage').textContent = `Memory Usage: ${memoryUsage}%`;
+            document.getElementById('memory-usage').innerHTML = `Memory Usage: <span class="metric-value">${memoryUsage}%</span>`;
         } else {
-            document.getElementById('memory-usage').textContent = 'Memory information not available';
+            document.getElementById('memory-usage').innerHTML = 'Memory information not available';
         }
     }).catch(function (error) {
         console.error('Error fetching memory info:', error);
-        document.getElementById('memory-usage').textContent = 'Error fetching memory info';
+        document.getElementById('memory-usage').innerHTML = 'Error fetching memory info';
     });
 
-    //Battery Info
+    // Battery Info
     if ('getBattery' in navigator) {
         navigator.getBattery().then(function (battery) {
             const batteryLevel = (battery.level * 100).toFixed(2);
             const chargingStatus = battery.charging ? 'Charging' : 'Not Charging';
             const timeRemaining = battery.dischargingTime !== Infinity ? (battery.dischargingTime / 60).toFixed(2) : 'Unknown';
-            document.getElementById('battery-info').innerHTML = `Battery Level: ${batteryLevel}% <br>${chargingStatus}<br>Time Remaining: ${timeRemaining} mins`;
+            document.getElementById('battery-info').innerHTML = `
+                    <p>Battery Level: <span class="metric-value">${batteryLevel}%</span></p>
+                    <p>Charging Status: <span class="metric-value">${chargingStatus}</span></p>
+                    <p>Time Remaining: <span class="metric-value">${timeRemaining} mins</span></p>
+                `;
         }).catch(function (error) {
             console.error('Error fetching battery info:', error);
-            document.getElementById('battery-info').textContent = 'Error fetching battery info';
+            document.getElementById('battery-info').innerHTML = 'Error fetching battery info';
         });
     } else {
-        document.getElementById('battery-info').textContent = 'Battery information not available';
+        document.getElementById('battery-info').innerHTML = 'Battery information not available';
     }
 });
