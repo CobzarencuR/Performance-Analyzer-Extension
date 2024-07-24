@@ -15,11 +15,11 @@ The Performance Analyzer Extension is a very simple tool designed to monitor and
 
 # How to load the extension:
 + Download the .zip file and extract it
-+ Go to your Extensions or just copy/paste this link chrome://extensions/
++ Go to your Extensions or just copy/paste this link: chrome://extensions/
 + If you're using another browser (ex. Edge) just go with edge://extensions/
 + Now click "Load unpacked" and select the folder that contains the extension
 + Pin the extension in the top of your screen for easy access
-+ Go any website and enjoy
++ Go on any website and enjoy
 
 # Privacy & Security:
 The Performance Analyzer Extension does not collect or store any personal data. All performance analysis is done locally on your device, ensuring your privacy and security.
